@@ -1,0 +1,16 @@
+{
+  "name": "utg-translator",
+  "author": "damienien",
+  "version": "1.0.0",
+  "description": "A simple Discord bot that translates messages using the DeepL API.",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "deepl-node": "^1.15.0",
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7"
+  }
+}
