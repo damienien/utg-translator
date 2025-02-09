@@ -14,6 +14,7 @@ const client = new Client({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildMembers,
   ],
   partials: [Partials.Message, Partials.Reaction, Partials.User],
 });
@@ -28,6 +29,23 @@ const emojiToLang = {
 
 client.once('ready', () => {
   console.log(`Bot connecté en tant que ${client.user.tag}`);
+});
+
+client.on('guildMemberAdd', (member) => {
+  const roleName = 'Pending';
+  const role = member.guild.roles.cache.find((r) => r.name === roleName);
+
+  if (!role) {
+    console.error(`Impossible de trouver le rôle ${roleName}`);
+    return;
+  };
+
+  try {
+    member.roles.add(role);
+    console.log(`Rôle "${roleName}" ajouté à ${member.user.tag}.`);
+  } catch (error) {
+    console.error(`Erreur lors de l'ajout du rôle à ${member.user.tag}:`, error);
+  }
 });
 
 // Object to track already sent translations
