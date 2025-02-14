@@ -25,6 +25,7 @@ const emojiToLang = {
   '🇺🇸': 'en-US',
   '🇩🇪': 'DE',
   '🇪🇸': 'ES',
+  '🇮🇹': 'IT',
 };
 
 client.once('ready', () => {
